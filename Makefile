@@ -9,4 +9,4 @@ clean:
 	cd Server && make clean
 
 test:
-	./bin/Server
+	./bin/server
