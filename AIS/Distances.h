@@ -1,23 +1,22 @@
 #pragma once
-#include <bitset>
+#include "BitsArray.h"
 #include <vector>
-
+#include <algorithm>
 namespace AIS
 {
 namespace Algorithms
 {
 
-template<size_t SIZE>
-size_t HammingDistance(const std::bitset<SIZE>& bits_1, const std::bitset<SIZE>& bits_2)
+size_t HammingDistance(const BitsArray& bits_1, const BitsArray& bits_2)
 {
 	return (bits_1 ^ bits_2).count();
 }
 
-template<size_t SIZE>
-std::vector<size_t>&& BinaryDistance(const std::bitset<SIZE>& bits_1, const std::bitset<SIZE>& bits_2)
+std::vector<size_t>&& BinaryDistance(const BitsArray& bits_1, const BitsArray& bits_2)
 {
 	std::vector<int> result(4, 0);
-	for (int i = 0; i < SIZE; ++i) {
+	size_t max_size = std::max(bits_1.size(), bits_2.size());
+	for (int i = 0; i < max_size; ++i) {
 		if (bits_1[i] == 1 && bits_2[i] == 1) {
 			++result[0];
 		}
@@ -33,8 +32,7 @@ std::vector<size_t>&& BinaryDistance(const std::bitset<SIZE>& bits_1, const std:
 	}
 }
 
-template<size_t SIZE>
-double RusselAndRaoDistance(const std::bitset<SIZE>& bits_1, const std::bitset<SIZE>& bits_2)
+double RusselAndRaoDistance(const BitsArray& bits_1, const BitsArray& bits_2)
 {
 	auto binary_distances = std::move(BinaryDistance(bits_1, bits_2));
 
@@ -44,8 +42,7 @@ double RusselAndRaoDistance(const std::bitset<SIZE>& bits_1, const std::bitset<S
 	return denominator ? numerator / denominator : 0;
 }
 
-template<size_t SIZE>
-double JacardAndNeedhamDistance(const std::bitset<SIZE>& bits_1, const std::bitset<SIZE>& bits_2)
+double JacardAndNeedhamDistance(const BitsArray& bits_1, const BitsArray& bits_2)
 {
 	auto binary_distances = std::move(BinaryDistance(bits_1, bits_2));
 
@@ -55,8 +52,7 @@ double JacardAndNeedhamDistance(const std::bitset<SIZE>& bits_1, const std::bits
 	return denominator ? numerator / denominator : 0;
 }
 
-template<size_t SIZE>
-double KulzinskiDistance(const std::bitset<SIZE>& bits_1, const std::bitset<SIZE>& bits_2)
+double KulzinskiDistance(const BitsArray& bits_1, const BitsArray& bits_2)
 {
 	auto binary_distances = std::move(BinaryDistance(bits_1, bits_2));
 
@@ -66,8 +62,7 @@ double KulzinskiDistance(const std::bitset<SIZE>& bits_1, const std::bitset<SIZE
 	return numerator / denominator;
 }
 
-template<size_t SIZE>
-double RogersAndTanimotoDistance(const std::bitset<SIZE>& bits_1, const std::bitset<SIZE>& bits_2)
+double RogersAndTanimotoDistance(const BitsArray& bits_1, const BitsArray& bits_2)
 {
 	auto binary_distances = std::move(BinaryDistance(bits_1, bits_2));
 
@@ -77,8 +72,7 @@ double RogersAndTanimotoDistance(const std::bitset<SIZE>& bits_1, const std::bit
 	return denominator ? numerator / denominator : 0;
 }
 
-template<size_t SIZE>
-double YuleDistance(const std::bitset<SIZE>& bits_1, const std::bitset<SIZE>& bits_2)
+double YuleDistance(const BitsArray& bits_1, const BitsArray& bits_2)
 {
 	auto binary_distances = std::move(BinaryDistance(bits_1, bits_2));
 
@@ -89,8 +83,7 @@ double YuleDistance(const std::bitset<SIZE>& bits_1, const std::bitset<SIZE>& bi
 	return denominator ? numerator / denominator : 0;
 }
 
-template<size_t SIZE>
-double SokalAndMichenerDistance(const std::bitset<SIZE>& bits_1, const std::bitset<SIZE>& bits_2)
+double SokalAndMichenerDistance(const BitsArray& bits_1, const BitsArray& bits_2)
 {
 	auto binary_distances = std::move(BinaryDistance(bits_1, bits_2));
 

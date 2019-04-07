@@ -1,16 +1,16 @@
 #pragma once
-#include <bitset>
-
+#include "BitsArray.h"
+#include <algorithm>
 namespace AIS
 {
 namespace Algorithms
 {
 
-template<size_t R, size_t SIZE>
-bool RContiguousBitsMatchingRule(const std::bitset<SIZE>& d, const std::bitset<SIZE>& x)
+bool RContiguousBitsMatchingRule(const BitsArray& d, const BitsArray& x, size_t R)
 {
 	size_t eq = 0;
-	for (size_t i = 0; i < SIZE && eq < R; ++i)
+	size_t max_size = std::max(d.size(), x.size());
+	for (size_t i = 0; i < max_size && eq < R; ++i)
 	{
 		if (d[i] == x[i])
 		{
@@ -24,13 +24,8 @@ bool RContiguousBitsMatchingRule(const std::bitset<SIZE>& d, const std::bitset<S
 	return eq >= R;
 }
 
-template<size_t R, size_t SIZE>
-bool RChunkMatchingRule(const std::bitset<R>& d, size_t p, const std::bitset<SIZE>& x)
+bool RChunkMatchingRule(const BitsArray& d, const BitsArray& x, size_t p, size_t R)
 {
-	if (p + R > SIZE)
-	{
-		return false;
-	}
 	for (size_t i = 0; i < R; ++i)
 	{
 		if (x[p + i] != d[i])

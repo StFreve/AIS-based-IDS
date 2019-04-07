@@ -1,12 +1,13 @@
 #pragma once
+#include "IAntigen.h"
+
 namespace AIS
 {
 
-template<class AntigenType>
 class IDetector
 {
 public:
-	bool match(const AntigenType& antigen) const = 0;
+	virtual bool match(const IAntigen& antigen) const = 0;
 };
 
 } // namespace AIS

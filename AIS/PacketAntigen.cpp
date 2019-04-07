@@ -3,14 +3,12 @@
 namespace AIS
 {
 
-template<size_t MAX_PACKET_SIZE>
-PacketAntigen<MAX_PACKET_SIZE>::PacketAntigen()
+PacketAntigen::PacketAntigen()
 {
 }
 
 
-template<size_t MAX_PACKET_SIZE>
-PacketAntigen<MAX_PACKET_SIZE>::~PacketAntigen()
+PacketAntigen::~PacketAntigen()
 {
 }
 

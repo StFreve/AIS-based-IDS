@@ -1,5 +1,5 @@
 #pragma once
-#include <bitset>
+#include "BitsArray.h"
 
 namespace AIS
 {
@@ -8,11 +8,11 @@ class IAntigen
 {
 };
 
-template <size_t SIZE>
+
 class IAntigenWithBitRepresentation : public IAntigen
 {
 public:
-	std::bitset<SIZE> get_bitset() const = 0;
+	virtual BitsArray get_bitarray() const = 0;
 };
 
 } // namespace AIS

@@ -120,12 +120,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BitsArray.cpp" />
     <ClCompile Include="ClonalSelectionAlgorithm.cpp" />
     <ClCompile Include="PacketAntigen.cpp" />
-    <ClCompile Include="RCBDetector.cpp" />
     <ClCompile Include="Utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BitsArray.h" />
     <ClInclude Include="Distances.h" />
     <ClInclude Include="IAntigen.h" />
     <ClInclude Include="ClonalSelectionAlgorithm.h" />
