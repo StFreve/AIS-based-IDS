@@ -1,4 +1,4 @@
-#include "Distances.h"
+#include "Algorithms.h"
 #include <algorithm>
 
 namespace AIS
@@ -6,10 +6,7 @@ namespace AIS
 namespace Algorithms
 {
 
-size_t HammingDistance(const BitsArray & bits_1, const BitsArray & bits_2)
-{
-	return (bits_1 ^ bits_2).count();
-}
+/*************************** Distances ***************************/
 
 std::vector<size_t> BinaryDistance(const BitsArray & bits_1, const BitsArray & bits_2)
 {
@@ -31,6 +28,11 @@ std::vector<size_t> BinaryDistance(const BitsArray & bits_1, const BitsArray & b
 	}
 
 	return result;
+}
+
+size_t HammingDistance(const BitsArray & bits_1, const BitsArray & bits_2)
+{
+	return (bits_1 ^ bits_2).count();
 }
 
 double RusselAndRaoDistance(const BitsArray & bits_1, const BitsArray & bits_2)
@@ -93,6 +95,68 @@ double SokalAndMichenerDistance(const BitsArray & bits_1, const BitsArray & bits
 		binary_distances[2] + binary_distances[3];
 	return denominator ? numerator / denominator : 0;
 }
+
+
+/*************************** Matching Rules ***************************/
+
+bool RContiguousBitsMatchingRule(const BitsArray & d, const BitsArray & x, size_t R)
+{
+	size_t eq = 0;
+	size_t max_size = std::max(d.size(), x.size());
+	for (size_t i = 0; i < max_size && eq < R; ++i)
+	{
+		if (d[i] == x[i])
+		{
+			++eq;
+		}
+		else
+		{
+			eq = 0;
+		}
+	}
+	return eq >= R;
+}
+
+bool RChunkMatchingRule(const BitsArray & d, const BitsArray & x, size_t p, size_t R)
+{
+	for (size_t i = 0; i < R; ++i)
+	{
+		if (x[p + i] != d[i])
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
+/*************************** Negative Selection ***************************/
+
+void NegativeSelection(std::vector<DetectorPtr>& detectors, const std::vector<AntigenPtr>& self_antigens)
+{
+	std::vector<DetectorPtr> result;
+	for (auto& detector : detectors)
+	{
+		bool recongnises_self_antigen = false;
+		for (auto& antigen : self_antigens)
+		{
+			if (detector->match(antigen.get()))
+			{
+				recongnises_self_antigen = true;
+				break;
+			}
+		}
+		if (recongnises_self_antigen == false)
+		{
+			result.push_back(detector);
+		}
+	}
+	detectors.swap(result);
+}
+
+/*************************** Positive Selection ***************************/
+
+/*************************** Clonal Selection ***************************/
+
 
 } // namepsace Algorithm
 } // namespace AIS

@@ -1,29 +1,21 @@
 #pragma once
 #include "IDetector.h"
 #include "IAntigen.h"
-#include "MatchingRules.h"
-
+#include "Algorithms.h"
+#include <stdexcept>
 #include <stddef.h>
 
 namespace AIS
 {
 
-template<class AntigenWithBitRepresentation>
 class RCBDetector :	public IDetector
 {
 public:
-	RCBDetector(const AntigenWithBitRepresentation& antigen, size_t R)
-		: antigen_(antigen)
-		, R_(R)
-	{
-	}
+	RCBDetector(const IAntigenWithBitRepresentation* antigen, size_t R);
 
-	bool match(const AntigenWithBitRepresentation& antigen) const
-	{
-		return Algorithms::RContiguousBitsMatchingRule(antigen_.get_bitarray(), antigen.get_bitarray(), R_);
-	}
+	virtual bool match(const IAntigen* antigen) const override;
 private:
-	const AntigenWithBitRepresentation antigen_;
+	AntigenWithBitRepresentationPtr antigen_;
 	const size_t R_;
 };
 

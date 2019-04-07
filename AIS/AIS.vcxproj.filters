@@ -21,16 +21,13 @@
     <ClCompile Include="PacketAntigen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ClonalSelectionAlgorithm.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="BitsArray.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Distances.cpp">
+    <ClCompile Include="Algorithms.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MatchingRules.cpp">
+    <ClCompile Include="RCBDetector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,16 +47,10 @@
     <ClInclude Include="PacketAntigen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Distances.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MatchingRules.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ClonalSelectionAlgorithm.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="BitsArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Algorithms.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
