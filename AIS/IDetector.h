@@ -1,8 +1,12 @@
 #pragma once
+namespace AIS
+{
+
+template<class AntigenType>
 class IDetector
 {
 public:
-	IDetector();
-	~IDetector();
+	bool match(const AntigenType& antigen) const = 0;
 };
 
+} // namespace AIS

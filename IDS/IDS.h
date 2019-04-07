@@ -1,7 +1,11 @@
 #pragma once
 #include "IIDS.h"
 #include "AIS/IDetector.h"
-class IDS :	public IIDS
+
+namespace IDS
+{
+
+class IDS : public IIDS
 {
 public:
 	IDS();
@@ -12,3 +16,4 @@ public:
 
 };
 
+} // namespace IDS

@@ -1,7 +1,8 @@
 #pragma once
+
 namespace AIS
 {
-namespace Utilities
+namespace Algorithms
 {
 	
 } // namespace Algorihtm

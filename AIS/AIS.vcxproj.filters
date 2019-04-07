@@ -18,13 +18,13 @@
     <ClCompile Include="Utilities.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="IDetector.cpp">
+    <ClCompile Include="RCBDetector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="IClonalSelectionAlgorithm.cpp">
+    <ClCompile Include="PacketAntigen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="IAntigen.cpp">
+    <ClCompile Include="ClonalSelectionAlgorithm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,10 +35,22 @@
     <ClInclude Include="IDetector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IClonalSelectionAlgorithm.h">
+    <ClInclude Include="IAntigen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IAntigen.h">
+    <ClInclude Include="RCBDetector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PacketAntigen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Distances.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MatchingRules.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ClonalSelectionAlgorithm.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

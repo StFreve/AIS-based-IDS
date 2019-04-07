@@ -2,8 +2,6 @@
 #include <iostream>
 int main(int argc, char** argv) 
 {
-	IDS ids;
-	std::cout << "IDS starting\n";
+	IDS::IDS ids;
 	ids.start();
-	std::cout << "IDS finished\n";
 }

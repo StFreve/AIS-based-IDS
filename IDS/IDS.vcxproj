@@ -132,7 +132,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IDS.cpp" />
-    <ClCompile Include="IIDS.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />

@@ -1,8 +1,9 @@
 #pragma once
+namespace IDS
+{
+
 class IIDS
 {
-public:
-	IIDS();
-	~IIDS();
 };
 
+} // namespace IDS

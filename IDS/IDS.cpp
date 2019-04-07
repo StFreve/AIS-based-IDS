@@ -1,11 +1,12 @@
 #include "IDS.h"
 #include <iostream>
 
+namespace IDS
+{
 
 IDS::IDS()
 {
-	std::cout << "IDS\n"; 
-	IDetector detector;
+
 }
 
 
@@ -15,4 +16,6 @@ IDS::~IDS()
 
 void IDS::start()
 {
+}
+
 }
