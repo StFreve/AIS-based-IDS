@@ -122,6 +122,8 @@
   <ItemGroup>
     <ClCompile Include="BitsArray.cpp" />
     <ClCompile Include="ClonalSelectionAlgorithm.cpp" />
+    <ClCompile Include="Distances.cpp" />
+    <ClCompile Include="MatchingRules.cpp" />
     <ClCompile Include="PacketAntigen.cpp" />
     <ClCompile Include="Utilities.cpp" />
   </ItemGroup>
