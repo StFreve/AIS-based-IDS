@@ -142,6 +142,7 @@
   <ItemGroup>
     <ClInclude Include="Algorithms.h" />
     <ClInclude Include="BitsArray.h" />
+    <ClInclude Include="Convert.h" />
     <ClInclude Include="IAntigen.h" />
     <ClInclude Include="IDetector.h" />
     <ClInclude Include="KDDAntigen.h" />
