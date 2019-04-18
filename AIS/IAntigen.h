@@ -1,6 +1,7 @@
 #pragma once
 #include "BitsArray.h"
 #include <memory>
+
 namespace AIS
 {
 
@@ -9,7 +10,7 @@ class IAntigen
 public:
 	virtual IAntigen* clone() const = 0;
 
-	virtual ~IAntigen();
+	virtual ~IAntigen() {};
 };
 
 

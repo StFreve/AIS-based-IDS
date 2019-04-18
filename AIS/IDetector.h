@@ -9,7 +9,7 @@ class IDetector
 public:
 	virtual bool match(const IAntigen* antigen) const = 0;
 
-	virtual ~IDetector();
+	virtual ~IDetector() {};
 };
 
 typedef std::shared_ptr<IDetector> DetectorPtr;
