@@ -8,7 +8,7 @@ namespace AIS
 class KDDDetector : public IDetector
 {
 public:
-	KDDDetector(size_t R, size_t start,
+	KDDDetector(size_t start, size_t R,
 		const Range<size_t>& duration_range,
 		const Range<KDDAntigen::protocol_type>& protocol_type_range,
 		const Range<std::string>& service_range,

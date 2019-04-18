@@ -4,7 +4,7 @@
 namespace AIS
 {
 
-KDDDetector::KDDDetector(size_t R, size_t start,
+KDDDetector::KDDDetector(size_t start, size_t R,
 	const Range<size_t>& duration_range,
 	const Range<KDDAntigen::protocol_type>& protocol_type_range,
 	const Range<std::string>& service_range,
@@ -117,7 +117,7 @@ bool KDDDetector::match(const IAntigen * antigen) const
 
 	PROCESS(duration);
 	PROCESS(protocol_type);
-	PROCESS(service);
+	//PROCESS(service);
 	PROCESS(flag);
 	PROCESS(src_bytes);
 	PROCESS(dst_bytes);
@@ -156,7 +156,7 @@ bool KDDDetector::match(const IAntigen * antigen) const
 	PROCESS(dst_host_srv_serror_rate);
 	PROCESS(dst_host_rerror_rate);
 	PROCESS(dst_host_srv_rerror_rate);
-	PROCESS(dummy);
+	//PROCESS(dummy);
 
 #undef PROCESS
 

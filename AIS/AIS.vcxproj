@@ -136,6 +136,7 @@
     <ClCompile Include="BitsArray.cpp" />
     <ClCompile Include="KDDAntigen.cpp" />
     <ClCompile Include="KDDDetector.cpp" />
+    <ClCompile Include="KDDDetectorGenerator.cpp" />
     <ClCompile Include="PacketAntigen.cpp" />
     <ClCompile Include="RCBDetector.cpp" />
     <ClCompile Include="Utilities.cpp" />
@@ -148,6 +149,7 @@
     <ClInclude Include="IDetector.h" />
     <ClInclude Include="KDDAntigen.h" />
     <ClInclude Include="KDDDetector.h" />
+    <ClInclude Include="KDDDetectorGenerator.h" />
     <ClInclude Include="PacketAntigen.h" />
     <ClInclude Include="RCBDetector.h" />
     <ClInclude Include="Utilities.h" />
