@@ -106,8 +106,14 @@ bool KDDDetector::match(const IAntigen * antigen) const
 		throw std::runtime_error("KDDDetector can work only with KDDAntigen!");
 	}
 	size_t max_seq = 0, current_seq = 0, pos = 0;
-#define PROCESS(x) if(x##_range_.match(kdd_antigen->get_##x()) && pos++ >= start_ ){ ++current_seq; } \
-				   else { max_seq = std::max(max_seq,current_seq); current_seq = 0; }
+#define PROCESS(member) \
+	if (member##_range_.match(kdd_antigen->get_##member()) && pos++ >= start_) { \
+		++current_seq; \
+	} \
+	else { \
+		max_seq = std::max(max_seq, current_seq); \
+		current_seq = 0; \
+	}
 
 	PROCESS(duration);
 	PROCESS(protocol_type);
