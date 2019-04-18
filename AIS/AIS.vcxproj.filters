@@ -30,6 +30,9 @@
     <ClCompile Include="RCBDetector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="KDDDetector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="KDDAntigen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -54,6 +57,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Algorithms.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KDDDetector.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="KDDAntigen.h">
