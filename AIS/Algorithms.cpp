@@ -136,16 +136,7 @@ void NegativeSelection(std::vector<DetectorPtr>& detectors, const std::vector<An
 	std::vector<DetectorPtr> result;
 	for (auto& detector : detectors)
 	{
-		bool recongnises_self_antigen = false;
-		for (auto& antigen : self_antigens)
-		{
-			if (detector->match(antigen.get()))
-			{
-				recongnises_self_antigen = true;
-				break;
-			}
-		}
-		if (recongnises_self_antigen == false)
+		if (NegativeSelection(detector, self_antigens))
 		{
 			result.push_back(detector);
 		}
@@ -153,10 +144,16 @@ void NegativeSelection(std::vector<DetectorPtr>& detectors, const std::vector<An
 	detectors.swap(result);
 }
 
-/*************************** Positive Selection ***************************/
+bool NegativeSelection(DetectorPtr detector, const std::vector<AntigenPtr>& self_antigens)
+{
+	for (auto& antigen : self_antigens)
+	{
+		if (detector->match(antigen.get()))
+		{
+			return false;
+		}
+	}
+	return true;
+}
 
-/*************************** Clonal Selection ***************************/
-
-
-} // namepsace Algorithm
-} // namespace AIS
+/*************************** Positive Selectio

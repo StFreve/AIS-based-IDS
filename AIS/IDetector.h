@@ -42,4 +42,6 @@ public:
 	const T start_;
 	const T end_;
 };
+
+typedef std::shared_ptr<IDetector> DetectorPtr;
 } // namespace AIS

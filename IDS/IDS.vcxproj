@@ -141,9 +141,11 @@
   <ItemGroup>
     <ClInclude Include="IDS.h" />
     <ClInclude Include="IIDS.h" />
+    <ClInclude Include="KDDIDS.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IDS.cpp" />
+    <ClCompile Include="KDDIDS.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Makefile" />

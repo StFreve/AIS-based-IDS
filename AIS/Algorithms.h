@@ -26,6 +26,7 @@ bool RChunkMatchingRule(const BitsArray& d, const BitsArray& x, size_t p, size_t
 
 /*************************** Negative Selection ***************************/
 void NegativeSelection(std::vector<DetectorPtr>& detectors, const std::vector<AntigenPtr>& self_antigens);
+bool NegativeSelection(DetectorPtr detector, const std::vector<AntigenPtr>& self_antigens);
 
 } // namepsace Algorithm
 } // namespace AIS
