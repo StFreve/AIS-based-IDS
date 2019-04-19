@@ -10,7 +10,7 @@ namespace Algorithms
 {
 
 /*************************** Distances ***************************/
-std::vector<size_t> BinaryDistance(const BitsArray& bits_1, const BitsArray& bits_2);
+std::vector<unsigned int> BinaryDistance(const BitsArray& bits_1, const BitsArray& bits_2);
 size_t HammingDistance(const BitsArray& bits_1, const BitsArray& bits_2);
 double RusselAndRaoDistance(const BitsArray& bits_1, const BitsArray& bits_2);
 double JacardAndNeedhamDistance(const BitsArray& bits_1, const BitsArray& bits_2);

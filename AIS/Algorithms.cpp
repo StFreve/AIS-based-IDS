@@ -8,9 +8,9 @@ namespace Algorithms
 
 /*************************** Distances ***************************/
 
-std::vector<size_t> BinaryDistance(const BitsArray & bits_1, const BitsArray & bits_2)
+std::vector<unsigned int> BinaryDistance(const BitsArray & bits_1, const BitsArray & bits_2)
 {
-	std::vector<size_t> result(4, 0);
+	std::vector<unsigned int> result(4, 0);
 	size_t max_size = std::max(bits_1.size(), bits_2.size());
 	for (size_t i = 0; i < max_size; ++i) {
 		if (bits_1[i] == 1 && bits_2[i] == 1) {
@@ -156,4 +156,10 @@ bool NegativeSelection(DetectorPtr detector, const std::vector<AntigenPtr>& self
 	return true;
 }
 
-/*************************** Positive Selectio
+/*************************** Positive Selection ***************************/
+
+/*************************** Clonal Selection ***************************/
+
+
+} // namepsace Algorithm
+} // namespace AIS
