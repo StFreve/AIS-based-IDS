@@ -8,11 +8,12 @@ SRC_FILES = $(wildcard $(SRC_DIR)/*.cpp)
 OBJ_FILES = $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SRC_FILES))
 DEP_FILES = $(LIBS) $(OBJ_FILES)
 
-CC = g++
-AR = ar
+CCX ?= g++
+CC ?= gcc
+AR ?= ar
 INCLUDES = -I$(ROOT_DIR)
 LIBS =
 LDLIBS =
-CFLAGS = -c -Wall -std=c++11 $(INCLUDES)
+CFLAGS = -c -Wall -std=c++14 $(INCLUDES)
 LDFLAGS = -static -L$(LIB_DIR) $(LDLIBS)
 ARFLAGS = rvs

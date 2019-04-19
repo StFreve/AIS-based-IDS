@@ -1,4 +1,4 @@
-include ../template.mk
+include ../Makefile.tmpl
 
 LIB_PATH = $(LIB_DIR)/libais.a
 
@@ -10,7 +10,7 @@ $(LIB_PATH): $(OBJ_FILES)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) $< -o $@
+	$(CCX) $(CFLAGS) $< -o $@
 
 clean:
 	rm -rf $(OBJ_FILES) $(LIB_PATH)

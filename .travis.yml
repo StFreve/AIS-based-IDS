@@ -1,6 +1,14 @@
 language: cpp
+os: linux
 compiler:
   - gcc
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-7
+env: CC=gcc-7 CXX=g++-7
 branches:
   only:
   - master
