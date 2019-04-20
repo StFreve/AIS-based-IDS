@@ -46,28 +46,36 @@ void KDDIDS::emulate_activity()
 {
 	AIS::KDDReader kdd_reader(kdd_full_set_);
 
-	auto antigens = kdd_reader.read_chunk(200);
-	size_t errors[4];
-	for (const auto& antigen : antigens) {
-		for (const auto& detector : detectors_) {
-			if (detector->match(antigen.first.get()) && antigen.second) {
+	size_t errors[4] = {};
+	while (kdd_reader.eof() == false) {
+		auto antigens = kdd_reader.read_chunk(200);
+		for (const auto& antigen : antigens) {
+			bool detected = false;
+			for (const auto& detector : detectors_) {
+				if (detector->match(antigen.first.get())) {
+					detected = true;
+					break;
+				}
+			}
+			if (detected && antigen.second) {
 				++errors[0];
 			}
-			else if (detector->match(antigen.first.get()) && !antigen.second) {
+			else if (detected && !antigen.second) {
 				++errors[1];
 			}
-			else if (!detector->match(antigen.first.get()) && antigen.second) {
+			else if (!detected && antigen.second) {
 				++errors[2];
 			}
-			else if (!detector->match(antigen.first.get()) && !antigen.second) {
+			else if (!detected && !antigen.second) {
 				++errors[3];
 			}
 		}
+		system("cls");
+		std::cout << "Correctly recognized as victim: " << errors[1] << std::endl;
+		std::cout << "Correctly recognized as legit: " << errors[2] << std::endl;
+		std::cout << "Incorrectly recognized as victim: " << errors[0] << std::endl;
+		std::cout << "Inorrectly recognized as legit: " << errors[3] << std::endl;
 	}
-	std::cout << "Correctly recognized as victim: " << errors[1] << std::endl;
-	std::cout << "Correctly recognized as legit: " << errors[2] << std::endl;
-	std::cout << "Incorrectly recognized as victim: " << errors[0] << std::endl;
-	std::cout << "Inorrectly recognized as legit: " << errors[3] << std::endl;
 }
 
 }
