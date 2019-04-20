@@ -30,9 +30,13 @@ void KDDIDS::training()
 	AIS::KDDReader kdd_reader(kdd_training_set_);
 	auto antigens = kdd_reader.read_all();
 	std::vector<AIS::AntigenPtr> self_antigens;
-	std::transform(antigens.begin(), antigens.end(), std::back_inserter(self_antigens), [](const auto& antigen) { return antigen.first; });
+	for (const auto& kdd_antigen : antigens) {
+		if (kdd_antigen.second) {
+			self_antigens.push_back(kdd_antigen.first);
+		}
+	}
 	
-	size_t DetectorsCount = 40;
+	size_t DetectorsCount = 4000;
 	while (detectors_.size() < DetectorsCount) {
 		AIS::DetectorPtr kdd_detector(kdd_generator.get_next());
 		if (AIS::Algorithms::NegativeSelection(kdd_detector, self_antigens))
