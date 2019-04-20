@@ -21,7 +21,8 @@ void KDDIDS::start()
 void KDDIDS::training()
 {
 	AIS::KDDDetectorGenerator kdd_generator;
-	auto antigens = AIS::Utilities::KDDRead(kdd_training_set_);
+	AIS::KDDReader kdd_reader(kdd_training_set_);
+	auto antigens = kdd_reader.read_all();
 	std::vector<AIS::AntigenPtr> self_antigens;
 	std::transform(antigens.begin(), antigens.end(), std::back_inserter(self_antigens), [](const auto& antigen) { return antigen.first; });
 	

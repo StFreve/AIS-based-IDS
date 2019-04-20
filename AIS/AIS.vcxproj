@@ -139,6 +139,7 @@
     <ClCompile Include="KDDAntigen.cpp" />
     <ClCompile Include="KDDDetector.cpp" />
     <ClCompile Include="KDDDetectorGenerator.cpp" />
+    <ClCompile Include="KDDReader.cpp" />
     <ClCompile Include="PacketAntigen.cpp" />
     <ClCompile Include="RCBDetector.cpp" />
     <ClCompile Include="Utilities.cpp" />
@@ -152,6 +153,7 @@
     <ClInclude Include="KDDAntigen.h" />
     <ClInclude Include="KDDDetector.h" />
     <ClInclude Include="KDDDetectorGenerator.h" />
+    <ClInclude Include="KDDReader.h" />
     <ClInclude Include="PacketAntigen.h" />
     <ClInclude Include="RCBDetector.h" />
     <ClInclude Include="Utilities.h" />
