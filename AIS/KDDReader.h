@@ -13,6 +13,7 @@ public:
 	KDDReader(const std::string& kdd_set_path);
 	~KDDReader();
 
+	std::pair<KDDAntigenPtr, bool> read_line();
 	std::vector<std::pair<KDDAntigenPtr, bool>> read_chunk(size_t chunk_size);
 	std::vector<std::pair<KDDAntigenPtr, bool>> read_all();
 
