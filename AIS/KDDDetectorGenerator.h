@@ -14,6 +14,7 @@ public:
 
 	KDDDetector* get_next();
 
+	KDDDetector* operator()();
 private:
 	std::random_device rd_;
 	std::default_random_engine generator_;

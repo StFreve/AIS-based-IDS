@@ -167,6 +167,11 @@ KDDDetector * KDDDetectorGenerator::get_next()
 		dummy_range);
 }
 
+KDDDetector * KDDDetectorGenerator::operator()()
+{
+	return get_next();
+}
+
 
 
 }
