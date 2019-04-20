@@ -21,7 +21,7 @@ Range<double> generate_range(std::default_random_engine& generator)
 template<>
 Range<size_t> generate_range(std::default_random_engine& generator)
 {
-	std::uniform_int_distribution<size_t> dist(0, 196000);
+	std::uniform_int_distribution<size_t> dist(0, 1000);
 	size_t a = dist(generator), b = dist(generator);
 	if (a > b) {
 		std::swap(a, b);
@@ -122,7 +122,7 @@ KDDDetector * KDDDetectorGenerator::get_next()
 	auto dst_host_srv_rerror_rate_range(generate_range<double>(generator_));
 	auto dummy_range(generate_range<size_t>(generator_));
 
-	return new KDDDetector(0, 7,
+	return new KDDDetector(0, 4,
 		duration_range,
 		protocol_type_range,
 		service_range,
