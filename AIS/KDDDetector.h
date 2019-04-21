@@ -1,11 +1,11 @@
 #pragma once
-#include "IDetector.h"
-#include "IAntigen.h"
+#include "Detector.h"
+#include "Antigen.h"
 #include "KDDAntigen.h"
 namespace AIS
 {
 
-class KDDDetector : public IDetector
+class KDDDetector : public Detector
 {
 public:
 	KDDDetector(size_t start, size_t R,
@@ -54,7 +54,7 @@ public:
 
 	~KDDDetector();
 
-	virtual bool match(const IAntigen* antigen) const;
+	virtual bool match(const Antigen* antigen) const;
 private:
 	size_t start_, R_;
 

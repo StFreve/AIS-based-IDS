@@ -1,10 +1,10 @@
 #pragma once
-#include "IAntigen.h"
+#include "Antigen.h"
 
 namespace AIS
 {
 
-class PacketAntigen : public IAntigenWithBitRepresentation
+class PacketAntigen : public AntigenWithBitRepresentation
 {
 public:
 	PacketAntigen();

@@ -1,4 +1,6 @@
 #pragma once
+#include "IDS.h"
+
 #include "AIS/KDDDetector.h"
 #include "AIS/KDDDetectorGenerator.h"
 #include "AIS/KDDAntigen.h"
@@ -15,14 +17,14 @@
 namespace IDS
 {
 
-class KDDIDS
+class KDDIDS : public IDS
 {
 public:
 	KDDIDS(const std::string& kdd_training_set, const std::string& kdd_full_set, size_t thread_count);
 	~KDDIDS();
 
-	void start();
-	void stop();
+	virtual void start() override;
+	virtual void stop() override;
 
 	std::vector<size_t> get_stats() const;
 private:

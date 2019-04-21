@@ -99,7 +99,7 @@ KDDDetector::~KDDDetector()
 {
 }
 
-bool KDDDetector::match(const IAntigen * antigen) const
+bool KDDDetector::match(const Antigen * antigen) const
 {
 	const KDDAntigen* kdd_antigen = dynamic_cast<const KDDAntigen*>(antigen);
 	if (kdd_antigen == NULL) {

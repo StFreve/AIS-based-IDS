@@ -148,8 +148,8 @@
     <ClInclude Include="Algorithms.h" />
     <ClInclude Include="BitsArray.h" />
     <ClInclude Include="Convert.h" />
-    <ClInclude Include="IAntigen.h" />
-    <ClInclude Include="IDetector.h" />
+    <ClInclude Include="Antigen.h" />
+    <ClInclude Include="Detector.h" />
     <ClInclude Include="KDDAntigen.h" />
     <ClInclude Include="KDDDetector.h" />
     <ClInclude Include="KDDDetectorGenerator.h" />

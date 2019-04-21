@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="IIDS.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="IDS.h">
       <Filter>Header Files</Filter>
     </ClInclude>

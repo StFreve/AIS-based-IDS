@@ -1,10 +1,10 @@
 #pragma once
-#include "IAntigen.h"
+#include "Antigen.h"
 
 namespace AIS
 {
 
-class KDDAntigen : public IAntigen
+class KDDAntigen : public Antigen
 {
 public:
 	enum protocol_type

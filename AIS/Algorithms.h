@@ -1,7 +1,7 @@
 #pragma once
 #include "BitsArray.h"
-#include "IDetector.h"
-#include "IAntigen.h"
+#include "Detector.h"
+#include "Antigen.h"
 #include <vector>
 
 namespace AIS

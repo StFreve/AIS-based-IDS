@@ -1,18 +1,28 @@
 #pragma once
-#include "IAntigen.h"
+#include "Antigen.h"
 #include <memory>
+#include <atomic>
 namespace AIS
 {
 
-class IDetector
+class Detector
 {
 public:
-	virtual bool match(const IAntigen* antigen) const = 0;
+	Detector();
+	virtual ~Detector();;
 
-	virtual ~IDetector() {};
+	virtual bool match(const Antigen* antigen) const = 0;
+
+public:
+	size_t stimulated_counter() const;
+	void reset_stimulatated_counter();
+	void stimulated() const;
+
+private:
+	mutable std::atomic<size_t> stimulated_counter_;
 };
 
-typedef std::shared_ptr<IDetector> DetectorPtr;
+typedef std::shared_ptr<Detector> DetectorPtr;
 
 template<class T>
 class Range
@@ -27,7 +37,7 @@ public:
 	virtual ~Range()
 	{
 	}
-	
+
 	// [start. end]
 	virtual  bool match(const T& value) const
 	{
@@ -43,5 +53,4 @@ public:
 	const T end_;
 };
 
-typedef std::shared_ptr<IDetector> DetectorPtr;
 } // namespace AIS
