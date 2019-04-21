@@ -87,8 +87,8 @@ void KDDIDS::process_packets()
 			bool detected = false;
 			for (const auto& detector : detectors_) {
 				if (detector->match(antigen.first.get())) {
+					detector->stimulated();
 					detected = true;
-					break;
 				}
 			}
 			if (detected && antigen.second) {
