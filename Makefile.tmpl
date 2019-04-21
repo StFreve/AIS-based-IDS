@@ -15,5 +15,5 @@ INCLUDES = -I$(ROOT_DIR)
 LIBS =
 LDLIBS =
 CFLAGS = -c -Wall -std=c++14 $(INCLUDES)
-LDFLAGS = -static -L$(LIB_DIR) $(LDLIBS)
+LDFLAGS = -pthread -static -L$(LIB_DIR) $(LDLIBS)
 ARFLAGS = rvs
