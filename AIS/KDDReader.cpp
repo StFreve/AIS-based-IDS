@@ -18,9 +18,9 @@ KDDReader::~KDDReader()
 {
 }
 
-std::pair<KDDAntigenPtr, bool> KDDReader::read_line()
+KDDReader::AntigenWithStatus KDDReader::read_line()
 {
-	std::pair<KDDAntigenPtr, bool> kdd_antigen_with_status;
+	AntigenWithStatus kdd_antigen_with_status;
 
 	std::vector<std::string> result;
 	std::string line, cell;
@@ -171,14 +171,19 @@ std::pair<KDDAntigenPtr, bool> KDDReader::read_line()
 		dst_host_rerror_rate,
 		dst_host_srv_rerror_rate,
 		dummy));
-	kdd_antigen_with_status.second = (class_str == "normal."); // is Normal
+
+	if (class_str.back() == '.') {
+		class_str.pop_back();
+	}
+
+	kdd_antigen_with_status.second = (class_str == "normal"); // is Normal
 
 	return kdd_antigen_with_status;
 }
 
-std::vector<std::pair<KDDAntigenPtr, bool>> KDDReader::read_chunk(size_t chunk_size)
+KDDReader::AntigenWithStatusList KDDReader::read_chunk(size_t chunk_size)
 {
-	std::vector<std::pair<KDDAntigenPtr, bool> > kdd_antigens;
+	AntigenWithStatusList kdd_antigens;
 
 	while (kdd_set_.good() && kdd_antigens.size() < chunk_size) {
 		try {
@@ -192,7 +197,7 @@ std::vector<std::pair<KDDAntigenPtr, bool>> KDDReader::read_chunk(size_t chunk_s
 	return kdd_antigens;
 }
 
-std::vector<std::pair<KDDAntigenPtr, bool>> AIS::KDDReader::read_all()
+KDDReader::AntigenWithStatusList AIS::KDDReader::read_all()
 {
 	return read_chunk(-1);
 }
