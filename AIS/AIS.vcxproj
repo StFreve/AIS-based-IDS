@@ -136,6 +136,8 @@
   <ItemGroup>
     <ClCompile Include="Algorithms.cpp" />
     <ClCompile Include="BitsArray.cpp" />
+    <ClCompile Include="Detector.cpp" />
+    <ClCompile Include="DetectorGenerator.cpp" />
     <ClCompile Include="KDDAntigen.cpp" />
     <ClCompile Include="KDDDetector.cpp" />
     <ClCompile Include="KDDDetectorGenerator.cpp" />
@@ -150,6 +152,7 @@
     <ClInclude Include="Convert.h" />
     <ClInclude Include="Antigen.h" />
     <ClInclude Include="Detector.h" />
+    <ClInclude Include="DetectorGenerator.h" />
     <ClInclude Include="KDDAntigen.h" />
     <ClInclude Include="KDDDetector.h" />
     <ClInclude Include="KDDDetectorGenerator.h" />

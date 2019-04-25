@@ -130,7 +130,6 @@ bool RChunkMatchingRule(const BitsArray & d, const BitsArray & x, size_t p, size
 }
 
 /*************************** Negative Selection ***************************/
-
 void NegativeSelection(std::vector<DetectorPtr>& detectors, const std::vector<AntigenPtr>& self_antigens)
 {
 	std::vector<DetectorPtr> result;
@@ -157,6 +156,30 @@ bool NegativeSelection(DetectorPtr detector, const std::vector<AntigenPtr>& self
 }
 
 /*************************** Positive Selection ***************************/
+void PositiveSelection(std::vector<DetectorPtr>& detectors, const std::vector<AntigenPtr>& mhc)
+{
+	std::vector<DetectorPtr> result;
+	for (auto& detector : detectors)
+	{
+		if (PositiveSelection(detector, mhc))
+		{
+			result.push_back(detector);
+		}
+	}
+	detectors.swap(result);
+}
+
+bool PositiveSelection(DetectorPtr detector, const std::vector<AntigenPtr>& mhc)
+{
+	for (auto& antigen : mhc)
+	{
+		if (detector->match(antigen.get()))
+		{
+			return true;
+		}
+	}
+	return false;
+}
 
 /*************************** Clonal Selection ***************************/
 

@@ -9,14 +9,18 @@ class Detector
 {
 public:
 	Detector();
-	virtual ~Detector();;
+	Detector(const Detector& rhd);
 
-	virtual bool match(const Antigen* antigen) const = 0;
+	virtual ~Detector();
+
+	bool match(const Antigen* antigen) const;
+	size_t stimulated() const;
+	void reset();
 
 public:
-	size_t stimulated_counter() const;
-	void reset_stimulatated_counter();
-	void stimulated() const;
+
+protected:
+	virtual bool match_impl(const Antigen* antigen) const = 0;
 
 private:
 	mutable std::atomic<size_t> stimulated_counter_;
@@ -31,6 +35,12 @@ public:
 	Range(const T& start, const T& end)
 		: start_(start)
 		, end_(end)
+	{
+	}
+
+	Range(const Range& rhr)
+		: start_(rhr.start_)
+		, end_(rhr.end_)
 	{
 	}
 
@@ -49,8 +59,9 @@ public:
 	{
 		return match(value);
 	}
-	const T start_;
-	const T end_;
+
+	T start_;
+	T end_;
 };
 
 } // namespace AIS

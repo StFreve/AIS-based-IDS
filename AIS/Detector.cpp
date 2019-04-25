@@ -7,22 +7,31 @@ AIS::Detector::Detector()
 {
 }
 
+Detector::Detector(const Detector & rhd)
+	: stimulated_counter_(0)
+{
+}
+
 AIS::Detector::~Detector()
 {
 }
 
-size_t AIS::Detector::stimulated_counter() const
+bool Detector::match(const Antigen * antigen) const
+{
+	if (match_impl(antigen)) {
+		++stimulated_counter_;
+		return true;
+	}
+	return false;
+}
+size_t AIS::Detector::stimulated() const
 {
 	return stimulated_counter_;
 }
 
-void AIS::Detector::reset_stimulatated_counter()
+void AIS::Detector::reset()
 {
 	stimulated_counter_ = 0;
-}
-
-void AIS::Detector::stimulated() const {
-	++stimulated_counter_;
 }
 
 } // namespace AIS
