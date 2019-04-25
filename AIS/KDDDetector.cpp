@@ -1,6 +1,9 @@
 #include "KDDDetector.h"
-#include <algorithm>
+#include "Utilities.h"
 
+#include <algorithm>
+#include <cmath> 
+#include <random>
 namespace AIS
 {
 
@@ -159,4 +162,54 @@ KDDDetector* KDDDetector::clone() const
 {
 	return new KDDDetector(*this);
 }
+
+void KDDDetector::mutate()
+{
+	std::random_device rd;
+	std::default_random_engine generator(rd());
+	std::uniform_int_distribution<int> mutate_dist(0, 1);
+
+	if (mutate_dist(generator)) duration_range_ = Utilities::generate_range<size_t>(generator, 0, 1000);
+	if (mutate_dist(generator)) protocol_type_range_ = Utilities::generate_range<KDDAntigen::protocol_type>(generator);
+	if (mutate_dist(generator)) service_range_ = Utilities::generate_range<std::string>(generator);
+	if (mutate_dist(generator)) flag_range_ = Utilities::generate_range<KDDAntigen::connection_state>(generator);
+	if (mutate_dist(generator)) src_bytes_range_ = Utilities::generate_range<size_t>(generator, 0, 1000);
+	if (mutate_dist(generator)) dst_bytes_range_ = Utilities::generate_range<size_t>(generator, 0, 1000);
+	if (mutate_dist(generator)) land_range_ = Utilities::generate_range<bool>(generator);
+	if (mutate_dist(generator)) wrong_fragment_range_ = Utilities::generate_range<size_t>(generator, 0, 1000);
+	if (mutate_dist(generator)) urgent_range_ = Utilities::generate_range<size_t>(generator, 0, 1000);
+	if (mutate_dist(generator)) hot_range_ = Utilities::generate_range<size_t>(generator, 0, 1000);
+	if (mutate_dist(generator)) num_failed_login_range_ = Utilities::generate_range<size_t>(generator, 0, 1000);
+	if (mutate_dist(generator)) logged_in_range_ = Utilities::generate_range<bool>(generator);
+	if (mutate_dist(generator)) num_compromised_range_ = Utilities::generate_range<size_t>(generator, 0, 1000);
+	if (mutate_dist(generator)) root_shell_range_ = Utilities::generate_range<bool>(generator);
+	if (mutate_dist(generator)) su_attempted_range_ = Utilities::generate_range<bool>(generator);
+	if (mutate_dist(generator)) num_root_range_ = Utilities::generate_range<size_t>(generator, 0, 1000);
+	if (mutate_dist(generator)) num_file_creation_range_ = Utilities::generate_range<size_t>(generator, 0, 1000);
+	if (mutate_dist(generator)) num_shell_range_ = Utilities::generate_range<size_t>(generator, 0, 1000);
+	if (mutate_dist(generator)) num_access_files_range_ = Utilities::generate_range<size_t>(generator, 0, 1000);
+	if (mutate_dist(generator)) num_outbound_cmds_range_ = Utilities::generate_range<size_t>(generator, 0, 1000);
+	if (mutate_dist(generator)) is_hot_login_range_ = Utilities::generate_range<bool>(generator);
+	if (mutate_dist(generator)) is_guest_login_range_ = Utilities::generate_range<bool>(generator);
+	if (mutate_dist(generator)) count_range_ = Utilities::generate_range<size_t>(generator, 0, 1000);
+	if (mutate_dist(generator)) srv_count_range_ = Utilities::generate_range<size_t>(generator, 0, 1000);
+	if (mutate_dist(generator)) serror_rate_range_ = Utilities::generate_range<double>(generator, 0, 1);
+	if (mutate_dist(generator)) srv_serror_rate_range_ = Utilities::generate_range<double>(generator, 0, 1);
+	if (mutate_dist(generator)) rerror_rate_range_ = Utilities::generate_range<double>(generator, 0, 1);
+	if (mutate_dist(generator)) src_rerror_rate_range_ = Utilities::generate_range<double>(generator, 0, 1);
+	if (mutate_dist(generator)) same_srv_rate_range_ = Utilities::generate_range<double>(generator, 0, 1);
+	if (mutate_dist(generator)) diff_srv_rate_range_ = Utilities::generate_range<double>(generator, 0, 1);
+	if (mutate_dist(generator)) srv_diff_host_rate_range_ = Utilities::generate_range<double>(generator, 0, 1);
+	if (mutate_dist(generator)) dst_host_count_range_ = Utilities::generate_range<size_t>(generator, 0, 1000);
+	if (mutate_dist(generator)) dst_host_srv_count_range_ = Utilities::generate_range<size_t>(generator, 0, 1000);
+	if (mutate_dist(generator)) dst_host_same_srv_rate_range_ = Utilities::generate_range<double>(generator, 0, 1);
+	if (mutate_dist(generator)) dst_host_diff_srv_rate_range_ = Utilities::generate_range<double>(generator, 0, 1);
+	if (mutate_dist(generator)) dst_host_same_src_port_rate_range_ = Utilities::generate_range<double>(generator, 0, 1);
+	if (mutate_dist(generator)) dst_host_srv_diff_host_rate_range_ = Utilities::generate_range<double>(generator, 0, 1);
+	if (mutate_dist(generator)) dst_host_serror_rate_range_ = Utilities::generate_range<double>(generator, 0, 1);
+	if (mutate_dist(generator)) dst_host_srv_serror_rate_range_ = Utilities::generate_range<double>(generator, 0, 1);
+	if (mutate_dist(generator)) dst_host_rerror_rate_range_ = Utilities::generate_range<double>(generator, 0, 1);
+	if (mutate_dist(generator)) dst_host_srv_rerror_rate_range_ = Utilities::generate_range<double>(generator, 0, 1);
+}
+
 } // namespace AIS

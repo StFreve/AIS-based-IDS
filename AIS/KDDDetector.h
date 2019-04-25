@@ -53,6 +53,7 @@ public:
 
 	virtual bool match_impl(const Antigen* antigen) const;
 	virtual KDDDetector* clone() const;
+	virtual void mutate();
 private:
 	size_t start_, R_;
 
