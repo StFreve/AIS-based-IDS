@@ -69,7 +69,7 @@ void KDDIDS::training()
 
 	size_t DetectorsCount = 2000;
 	while (detectors_.size() < DetectorsCount) {
-		AIS::DetectorPtr kdd_detector(kdd_generator.get_next());
+		AIS::DetectorPtr kdd_detector(kdd_generator.generate());
 		if (AIS::Algorithms::NegativeSelection(kdd_detector, self_antigens))
 		{
 			detectors_.push_back(kdd_detector);

@@ -77,7 +77,7 @@ KDDDetectorGenerator::~KDDDetectorGenerator()
 {
 }
 
-KDDDetector * KDDDetectorGenerator::get_next()
+KDDDetector * KDDDetectorGenerator::generate() const
 {
 	auto duration_range(generate_range<size_t>(generator_));
 	auto protocol_type_range(generate_range<KDDAntigen::protocol_type>(generator_));
@@ -166,12 +166,7 @@ KDDDetector * KDDDetectorGenerator::get_next()
 		dst_host_srv_rerror_rate_range,
 		dummy_range);
 }
-
-KDDDetector * KDDDetectorGenerator::operator()()
-{
-	return get_next();
+		dst_host_srv_rerror_rate_range);
 }
-
-
 
 }

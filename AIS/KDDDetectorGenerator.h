@@ -1,23 +1,22 @@
 #pragma once
+#include "DetectorGenerator.h"
 #include "KDDDetector.h"
-#include <initializer_list>
+
 #include <random>
 
 namespace AIS
 {
 
-class KDDDetectorGenerator
+class KDDDetectorGenerator : public DetectorGenerator
 {
 public:
 	KDDDetectorGenerator();
 	~KDDDetectorGenerator();
 
-	KDDDetector* get_next();
-
-	KDDDetector* operator()();
+	virtual KDDDetector* generate() const override;
 private:
-	std::random_device rd_;
-	std::default_random_engine generator_;
+	mutable std::random_device rd_;
+	mutable std::default_random_engine generator_;
 };
 
 
