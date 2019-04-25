@@ -18,6 +18,7 @@ public:
 	void reset();
 
 public:
+	virtual Detector* clone() const = 0;
 
 protected:
 	virtual bool match_impl(const Antigen* antigen) const = 0;

@@ -92,11 +92,7 @@ KDDDetector::KDDDetector(size_t start, size_t R,
 {
 }
 
-KDDDetector::~KDDDetector()
-{
-}
-
-bool KDDDetector::match(const Antigen * antigen) const
+bool KDDDetector::match_impl(const Antigen * antigen) const
 {
 	const KDDAntigen* kdd_antigen = dynamic_cast<const KDDAntigen*>(antigen);
 	if (kdd_antigen == NULL) {
@@ -159,4 +155,8 @@ bool KDDDetector::match(const Antigen * antigen) const
 	return max_seq >= R_;
 }
 
+KDDDetector* KDDDetector::clone() const
+{
+	return new KDDDetector(*this);
+}
 } // namespace AIS

@@ -13,7 +13,7 @@ RCBDetector::RCBDetector(const AntigenWithBitRepresentation* antigen, size_t R)
 	antigen_.reset(antigen->clone());
 }
 
-bool RCBDetector::match(const Antigen* antigen) const
+bool RCBDetector::match_impl(const Antigen* antigen) const
 {
 	const AntigenWithBitRepresentation* antigen_with_bits_representation = dynamic_cast<const AntigenWithBitRepresentation*>(antigen);
 	if (antigen_with_bits_representation == NULL)

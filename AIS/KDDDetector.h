@@ -51,9 +51,8 @@ public:
 		const Range<double>& dst_host_rerror_rate_range,
 		const Range<double>& dst_host_srv_rerror_rate_range);
 
-	~KDDDetector();
-
-	virtual bool match(const Antigen* antigen) const;
+	virtual bool match_impl(const Antigen* antigen) const;
+	virtual KDDDetector* clone() const;
 private:
 	size_t start_, R_;
 
