@@ -1,7 +1,9 @@
 #pragma once
 #include "BitsArray.h"
-#include "Detector.h"
 #include "Antigen.h"
+#include "Detector.h"
+#include "DetectorGenerator.h"
+
 #include <vector>
 
 namespace AIS
@@ -31,5 +33,10 @@ bool NegativeSelection(DetectorPtr detector, const std::vector<AntigenPtr>& self
 /*************************** Positive Selection ***************************/
 void PositiveSelection(std::vector<DetectorPtr>& detectors, const std::vector<AntigenPtr>& mhc);
 bool PositiveSelection(DetectorPtr detector, const std::vector<AntigenPtr>& mhc);
+
+/*************************** Clonal Selection ***************************/
+void ClonalSelection(std::vector<DetectorPtr>& detectors, DetectorGeneratorPtr generator, const std::vector<AntigenPtr>& self_antigens);
+//void ClonalSelection(std::vector<DetectorPtr>& detectors, const std::vector<AntigenPtr>& self_antigens);
+
 } // namepsace Algorithm
 } // namespace AIS

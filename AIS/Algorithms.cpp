@@ -182,7 +182,29 @@ bool PositiveSelection(DetectorPtr detector, const std::vector<AntigenPtr>& mhc)
 }
 
 /*************************** Clonal Selection ***************************/
+void ClonalSelection(std::vector<DetectorPtr>& detectors, DetectorGeneratorPtr generator,const std::vector<AntigenPtr>& self_antigens)
+{
+	std::sort(detectors.rbegin(), detectors.rend(), [](const DetectorPtr& lhd, const DetectorPtr& rhd)
+	{
+		return lhd->stimulated() < rhd->stimulated();
+	});
 
+	std::vector<DetectorPtr>::iterator detector_40_percentage = detectors.begin() + detectors.size() * 0.4 + 1;
+	std::vector<DetectorPtr> new_detectors(detectors.begin(), detector_40_percentage);
+
+	for (auto dit = detectors.begin(); dit != detector_40_percentage; ++dit)
+	{
+		new_detectors.push_back(DetectorPtr((*dit)->clone()));
+		new_detectors.back()->mutate();
+	}
+
+	NegativeSelection(new_detectors, self_antigens);
+
+	while (new_detectors.size() < detectors.size())
+	{
+
+	}
+}
 
 } // namepsace Algorithm
 } // namespace AIS
