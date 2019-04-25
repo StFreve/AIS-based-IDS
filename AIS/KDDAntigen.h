@@ -71,8 +71,7 @@ public:
 		double dst_host_serror_rate,
 		double dst_host_srv_serror_rate,
 		double dst_host_rerror_rate,
-		double dst_host_srv_rerror_rate,
-		size_t dummy);
+		double dst_host_srv_rerror_rate);
 	~KDDAntigen();
 
 	size_t get_duration() const;
@@ -116,7 +115,49 @@ public:
 	double get_dst_host_srv_serror_rate() const;
 	double get_dst_host_rerror_rate() const;
 	double get_dst_host_srv_rerror_rate() const;
-	size_t get_dummy() const;
+
+
+	void set_duration(size_t duration);
+	void set_protocol_type(protocol_type protocol_type);
+	void set_service(const std::string& service);
+	void set_flag(connection_state flag);
+	void set_src_bytes(size_t src_bytes);
+	void set_dst_bytes(size_t dst_bytes);
+	void set_land(bool land);
+	void set_wrong_fragment(size_t wrong_fragment);
+	void set_urgent(size_t urgent);
+	void set_hot(size_t hot);
+	void set_num_failed_login(size_t num_failed_login);
+	void set_logged_in(bool logged_in);
+	void set_num_compromised(size_t num_compromised);
+	void set_root_shell(bool root_shell);
+	void set_su_attempted(bool su_attempted);
+	void set_num_root(size_t num_root);
+	void set_num_file_creation(size_t num_file_creation);
+	void set_num_shell(size_t num_shell);
+	void set_num_access_files(size_t num_access_files);
+	void set_num_outbound_cmds(size_t num_outbound_cmds);
+	void set_is_hot_login(bool is_hot_login);
+	void set_is_guest_login(bool is_guest_login);
+	void set_count(size_t count);
+	void set_srv_count(size_t srv_count);
+	void set_serror_rate(double serror_rate);
+	void set_srv_serror_rate(double srv_serror_rate);
+	void set_rerror_rate(double rerror_rate);
+	void set_src_rerror_rate(double src_rerror_rate);
+	void set_same_srv_rate(double same_srv_rate);
+	void set_diff_srv_rate(double diff_srv_rate);
+	void set_srv_diff_host_rate(double srv_diff_host_rate);
+	void set_dst_host_count(size_t dst_host_count);
+	void set_dst_host_srv_count(size_t dst_host_srv_count);
+	void set_dst_host_same_srv_rate(double dst_host_same_srv_rate);
+	void set_dst_host_diff_srv_rate(double dst_host_diff_srv_rate);
+	void set_dst_host_same_src_port_rate(double dst_host_same_src_port_rate);
+	void set_dst_host_srv_diff_host_rate(double dst_host_srv_diff_host_rate);
+	void set_dst_host_serror_rate(double dst_host_serror_rate);
+	void set_dst_host_srv_serror_rate(double dst_host_srv_serror_rate);
+	void set_dst_host_rerror_rate(double dst_host_rerror_rate);
+	void set_dst_host_srv_rerror_rate(double dst_host_srv_rerror_rate);
 
 	virtual KDDAntigen* clone() const;
 private:
@@ -161,7 +202,6 @@ private:
 	double dst_host_srv_serror_rate_;
 	double dst_host_rerror_rate_;
 	double dst_host_srv_rerror_rate_;
-	size_t dummy_;
 };
 
 typedef std::shared_ptr<KDDAntigen> KDDAntigenPtr;

@@ -45,8 +45,7 @@ KDDDetector::KDDDetector(size_t start, size_t R,
 	const Range<double>& dst_host_serror_rate_range,
 	const Range<double>& dst_host_srv_serror_rate_range,
 	const Range<double>& dst_host_rerror_rate_range,
-	const Range<double>& dst_host_srv_rerror_rate_range,
-	const Range<size_t>& dummy_range)
+	const Range<double>& dst_host_srv_rerror_rate_range)
 	: start_(start)
 	, R_(R)
 	, duration_range_(duration_range)
@@ -90,10 +89,8 @@ KDDDetector::KDDDetector(size_t start, size_t R,
 	, dst_host_srv_serror_rate_range_(dst_host_srv_serror_rate_range)
 	, dst_host_rerror_rate_range_(dst_host_rerror_rate_range)
 	, dst_host_srv_rerror_rate_range_(dst_host_srv_rerror_rate_range)
-	, dummy_range_(dummy_range)
 {
 }
-
 
 KDDDetector::~KDDDetector()
 {
@@ -156,7 +153,6 @@ bool KDDDetector::match(const Antigen * antigen) const
 	PROCESS(dst_host_srv_serror_rate);
 	PROCESS(dst_host_rerror_rate);
 	PROCESS(dst_host_srv_rerror_rate);
-	//PROCESS(dummy);
 
 #undef PROCESS
 

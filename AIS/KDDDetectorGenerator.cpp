@@ -120,7 +120,6 @@ KDDDetector * KDDDetectorGenerator::generate() const
 	auto dst_host_srv_serror_rate_range(generate_range<double>(generator_));
 	auto dst_host_rerror_rate_range(generate_range<double>(generator_));
 	auto dst_host_srv_rerror_rate_range(generate_range<double>(generator_));
-	auto dummy_range(generate_range<size_t>(generator_));
 
 	return new KDDDetector(0, 4,
 		duration_range,
@@ -163,9 +162,6 @@ KDDDetector * KDDDetectorGenerator::generate() const
 		dst_host_serror_rate_range,
 		dst_host_srv_serror_rate_range,
 		dst_host_rerror_rate_range,
-		dst_host_srv_rerror_rate_range,
-		dummy_range);
-}
 		dst_host_srv_rerror_rate_range);
 }
 

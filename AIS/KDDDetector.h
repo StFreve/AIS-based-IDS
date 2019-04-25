@@ -49,8 +49,7 @@ public:
 		const Range<double>& dst_host_serror_rate_range,
 		const Range<double>& dst_host_srv_serror_rate_range,
 		const Range<double>& dst_host_rerror_rate_range,
-		const Range<double>& dst_host_srv_rerror_rate_range,
-		const Range<size_t>& dummy_range);
+		const Range<double>& dst_host_srv_rerror_rate_range);
 
 	~KDDDetector();
 
@@ -99,7 +98,6 @@ private:
 	Range<double> dst_host_srv_serror_rate_range_;
 	Range<double> dst_host_rerror_rate_range_;
 	Range<double> dst_host_srv_rerror_rate_range_;
-	Range<size_t> dummy_range_;
 };
 
 } // namespace AIS

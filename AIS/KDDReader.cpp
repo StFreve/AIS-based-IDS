@@ -13,7 +13,6 @@ KDDReader::KDDReader(const std::string& kdd_set_path)
 {
 }
 
-
 KDDReader::~KDDReader()
 {
 }
@@ -80,7 +79,6 @@ KDDReader::AntigenWithStatus KDDReader::read_line()
 	double dst_host_srv_serror_rate;
 	double dst_host_rerror_rate;
 	double dst_host_srv_rerror_rate;
-	size_t dummy;
 	std::string class_str;
 
 	convertingStream >> duration;
@@ -125,7 +123,6 @@ KDDReader::AntigenWithStatus KDDReader::read_line()
 	convertingStream >> dst_host_rerror_rate;
 	convertingStream >> dst_host_srv_rerror_rate;
 	convertingStream >> class_str;
-	dummy = 0;
 
 	KDDAntigen::protocol_type protocol_type = Convert::convert_string_to_enum<KDDAntigen::protocol_type>(protocol_type_str);
 	KDDAntigen::connection_state flag = Convert::convert_string_to_enum<KDDAntigen::connection_state>(connection_state_str);
@@ -169,8 +166,7 @@ KDDReader::AntigenWithStatus KDDReader::read_line()
 		dst_host_serror_rate,
 		dst_host_srv_serror_rate,
 		dst_host_rerror_rate,
-		dst_host_srv_rerror_rate,
-		dummy));
+		dst_host_srv_rerror_rate));
 
 	if (class_str.back() == '.') {
 		class_str.pop_back();
