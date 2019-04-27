@@ -8,7 +8,7 @@ AIS::Detector::Detector()
 }
 
 Detector::Detector(const Detector & rhd)
-	: stimulated_counter_(0)
+	: stimulated_counter_(rhd.stimulated_counter_.load())
 {
 }
 
@@ -27,11 +27,6 @@ bool Detector::match(const Antigen * antigen) const
 size_t AIS::Detector::stimulated() const
 {
 	return stimulated_counter_;
-}
-
-void AIS::Detector::reset()
-{
-	stimulated_counter_ = 0;
 }
 
 } // namespace AIS

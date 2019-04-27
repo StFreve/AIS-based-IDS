@@ -158,9 +158,14 @@ bool KDDDetector::match_impl(const Antigen * antigen) const
 	return max_seq >= R_;
 }
 
-KDDDetector* KDDDetector::clone() const
+KDDDetector* KDDDetector::clone(bool reset_stimations) const
 {
-	return new KDDDetector(*this);
+	KDDDetector* detector = new KDDDetector(*this);
+	if (reset_stimations)
+	{
+		detector->stimulated_counter_ = 0;
+	}
+	return detector;		
 }
 
 void KDDDetector::mutate()

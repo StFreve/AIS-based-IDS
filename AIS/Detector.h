@@ -9,22 +9,23 @@ class Detector
 {
 public:
 	Detector();
-	Detector(const Detector& rhd);
 
 	virtual ~Detector();
 
 	bool match(const Antigen* antigen) const;
 	size_t stimulated() const;
-	void reset();
 
 public:
-	virtual Detector* clone() const = 0;
+	virtual Detector* clone(bool reset_stimations = true) const = 0;
 	virtual void mutate() = 0;
+
+protected:
+	Detector(const Detector& rhd);
 
 protected:
 	virtual bool match_impl(const Antigen* antigen) const = 0;
 
-private:
+protected:
 	mutable std::atomic<size_t> stimulated_counter_;
 };
 

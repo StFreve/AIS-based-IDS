@@ -189,21 +189,33 @@ void ClonalSelection(std::vector<DetectorPtr>& detectors, DetectorGeneratorPtr g
 		return lhd->stimulated() < rhd->stimulated();
 	});
 
-	std::vector<DetectorPtr>::iterator detector_40_percentage = detectors.begin() + detectors.size() * 0.4 + 1;
-	std::vector<DetectorPtr> new_detectors(detectors.begin(), detector_40_percentage);
+	std::vector<DetectorPtr>::iterator detector_20_percentage = detectors.begin() + detectors.size() * 0.2 + 1;
+	std::vector<DetectorPtr>::iterator detector_60_percentage = detectors.begin() + detectors.size() * 0.6 + 1;
+	std::vector<DetectorPtr> new_detectors;
 
-	for (auto dit = detectors.begin(); dit != detector_40_percentage; ++dit)
+	for (auto dit = detectors.begin(); dit != detector_60_percentage; ++dit)
 	{
-		new_detectors.push_back(DetectorPtr((*dit)->clone()));
-		new_detectors.back()->mutate();
+		new_detectors.push_back(DetectorPtr((*dit)->clone(false))); // Clone
+		if (dit < detector_20_percentage) 
+		{
+			new_detectors.push_back(DetectorPtr((*dit)->clone())); // Mutate version
+			new_detectors.back()->mutate();
+		}
 	}
 
 	NegativeSelection(new_detectors, self_antigens);
 
 	while (new_detectors.size() < detectors.size())
 	{
+		DetectorPtr new_detector(generator->generate());
 
+		if (NegativeSelection(new_detector, self_antigens))
+		{
+			new_detectors.push_back(new_detector);
+		}
 	}
+
+	detectors.swap(new_detectors);
 }
 
 } // namepsace Algorithm
