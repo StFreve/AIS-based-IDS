@@ -53,24 +53,50 @@ private:
 		std::mutex running_mutex_;
 		bool running_;
 	};
+
+	class TwoStepMutex : public std::_Mutex_base
+	{
+	public:
+		TwoStepMutex();
+		void lite_lock();
+		void lite_unlock();
+		void lock();
+		void unlock();
+	private:
+		size_t counter_;
+		std::mutex counter_mutex_, full_mutex_;
+		std::unique_lock<std::mutex> locker_;
+		std::condition_variable cv_;
+	};
+
+	class LiteLock
+	{
+		TwoStepMutex& mutex_;
+	public:
+		LiteLock(TwoStepMutex& mutex);
+		~LiteLock();
+	};
 private:
 	void training();
 	void process_packets();
 
 private:
-	std::vector<AIS::DetectorPtr> detectors_;
+	typedef std::vector<AIS::DetectorPtr> detectors_t;
+	typedef std::vector<AIS::AntigenPtr> antigens_t;
 
-	std::string kdd_training_set_;
+	detectors_t detectors_;
+	antigens_t self_antigens_;
+	std::vector<size_t> stats_;
+	AIS::DetectorGeneratorPtr detector_generator_;
 
 	ActivityEmulator activity_emulator_;
 	std::vector<std::thread> threads_;
-	std::condition_variable new_packets_cond_;
 
-	std::mutex sync_mutex_;
 	bool running_;
 
+	mutable std::mutex sync_mutex_;
+	mutable std::mutex detectors_mutex_;
 	mutable std::mutex stats_mutex_;
-	std::vector<size_t> stats_;
 };
 
 }
