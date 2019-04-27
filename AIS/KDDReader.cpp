@@ -52,7 +52,7 @@ KDDReader::AntigenWithStatus KDDReader::read_line()
 	bool logged_in;
 	size_t num_compromised;
 	bool root_shell;
-	bool su_attempted;
+	/* bool */ size_t su_attempted;
 	size_t num_root;
 	size_t num_file_creation;
 	size_t num_shell;
@@ -168,6 +168,9 @@ KDDReader::AntigenWithStatus KDDReader::read_line()
 		dst_host_rerror_rate,
 		dst_host_srv_rerror_rate));
 
+	if (class_str.empty()) {
+		throw std::runtime_error("Wrong line in kdd dataset! No class where specified!");
+	}
 	if (class_str.back() == '.') {
 		class_str.pop_back();
 	}
