@@ -50,10 +50,10 @@ void KDDIDS::stop()
 
 	if (running_) {
 		running_ = false;
-		activity_emulator_.stop();
 		for (auto& thread : threads_) {
 			thread.join();
 		}
+		activity_emulator_.stop();
 	}
 }
 
@@ -169,7 +169,7 @@ void KDDIDS::ActivityEmulator::stop()
 	std::lock_guard<std::mutex> lock(sync_mutex_);
 
 	if (running_) {
-		running_ = true;
+		running_ = false;
 		thread_.join();
 	}
 }
