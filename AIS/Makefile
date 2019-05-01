@@ -10,7 +10,7 @@ $(LIB_PATH): $(OBJ_FILES)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	mkdir -p $(OBJ_DIR)
-	$(CCX) $(CFLAGS) $< -o $@
+	$(CXX) $(CFLAGS) $< -o $@
 
 clean:
 	rm -rf $(OBJ_FILES) $(LIB_PATH)

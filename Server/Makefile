@@ -9,12 +9,12 @@ all: $(SRC_FILES) $(EXECUTABLE)
 	
 $(EXECUTABLE): $(DEP_FILES)
 	mkdir -p $(BIN_DIR)
-	$(CCX) $(OBJ_FILES) $(LDFLAGS) -o $@
+	$(CXX) $(OBJ_FILES) $(LDFLAGS) -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 	echo $<
 	mkdir -p $(OBJ_DIR)
-	$(CCX) $(CFLAGS) $< -o $@
+	$(CXX) $(CFLAGS) $< -o $@
 
 clean:
 	rm -rf $(OBJ_FILES) $(EXECUTABLE)
