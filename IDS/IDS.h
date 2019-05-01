@@ -1,19 +1,17 @@
 #pragma once
-#include "IIDS.h"
-#include "AIS/IDetector.h"
+#include "AIS/Detector.h"
 
 namespace IDS
 {
 
-class IDS : public IIDS
+class IDS 
 {
 public:
-	IDS();
-	~IDS();
+	virtual ~IDS();
 
 public:
-	void start();
-
+	virtual void start() = 0;
+	virtual void stop() = 0;
 };
 
 } // namespace IDS

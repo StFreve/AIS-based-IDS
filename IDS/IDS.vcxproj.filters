@@ -15,15 +15,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="IIDS.h">
+    <ClInclude Include="IDS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="IDS.h">
+    <ClInclude Include="KDDIDS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="IDS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="KDDIDS.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

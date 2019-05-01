@@ -1,6 +1,6 @@
 #pragma once
-#include "IDetector.h"
-#include "IAntigen.h"
+#include "Detector.h"
+#include "Antigen.h"
 #include "Algorithms.h"
 #include <stdexcept>
 #include <stddef.h>
@@ -8,12 +8,12 @@
 namespace AIS
 {
 
-class RCBDetector :	public IDetector
+class RCBDetector :	public Detector
 {
 public:
-	RCBDetector(const IAntigenWithBitRepresentation* antigen, size_t R);
+	RCBDetector(const AntigenWithBitRepresentation* antigen, size_t R);
 
-	virtual bool match(const IAntigen* antigen) const override;
+	virtual bool match_impl(const Antigen* antigen) const override;
 private:
 	AntigenWithBitRepresentationPtr antigen_;
 	const size_t R_;

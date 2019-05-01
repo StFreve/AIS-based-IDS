@@ -8,9 +8,9 @@ namespace Algorithms
 
 /*************************** Distances ***************************/
 
-std::vector<size_t> BinaryDistance(const BitsArray & bits_1, const BitsArray & bits_2)
+std::vector<unsigned int> BinaryDistance(const BitsArray & bits_1, const BitsArray & bits_2)
 {
-	std::vector<size_t> result(4, 0);
+	std::vector<unsigned int> result(4, 0);
 	size_t max_size = std::max(bits_1.size(), bits_2.size());
 	for (size_t i = 0; i < max_size; ++i) {
 		if (bits_1[i] == 1 && bits_2[i] == 1) {
@@ -130,22 +130,12 @@ bool RChunkMatchingRule(const BitsArray & d, const BitsArray & x, size_t p, size
 }
 
 /*************************** Negative Selection ***************************/
-
 void NegativeSelection(std::vector<DetectorPtr>& detectors, const std::vector<AntigenPtr>& self_antigens)
 {
 	std::vector<DetectorPtr> result;
 	for (auto& detector : detectors)
 	{
-		bool recongnises_self_antigen = false;
-		for (auto& antigen : self_antigens)
-		{
-			if (detector->match(antigen.get()))
-			{
-				recongnises_self_antigen = true;
-				break;
-			}
-		}
-		if (recongnises_self_antigen == false)
+		if (NegativeSelection(detector, self_antigens))
 		{
 			result.push_back(detector);
 		}
@@ -153,10 +143,80 @@ void NegativeSelection(std::vector<DetectorPtr>& detectors, const std::vector<An
 	detectors.swap(result);
 }
 
+bool NegativeSelection(DetectorPtr detector, const std::vector<AntigenPtr>& self_antigens)
+{
+	for (auto& antigen : self_antigens)
+	{
+		if (detector->match(antigen.get()))
+		{
+			return false;
+		}
+	}
+	return true;
+}
+
 /*************************** Positive Selection ***************************/
+void PositiveSelection(std::vector<DetectorPtr>& detectors, const std::vector<AntigenPtr>& mhc)
+{
+	std::vector<DetectorPtr> result;
+	for (auto& detector : detectors)
+	{
+		if (PositiveSelection(detector, mhc))
+		{
+			result.push_back(detector);
+		}
+	}
+	detectors.swap(result);
+}
+
+bool PositiveSelection(DetectorPtr detector, const std::vector<AntigenPtr>& mhc)
+{
+	for (auto& antigen : mhc)
+	{
+		if (detector->match(antigen.get()))
+		{
+			return true;
+		}
+	}
+	return false;
+}
 
 /*************************** Clonal Selection ***************************/
+void ClonalSelection(std::vector<DetectorPtr>& detectors, DetectorGeneratorPtr generator,const std::vector<AntigenPtr>& self_antigens)
+{
+	std::sort(detectors.rbegin(), detectors.rend(), [](const DetectorPtr& lhd, const DetectorPtr& rhd)
+	{
+		return lhd->stimulated() < rhd->stimulated();
+	});
 
+	std::vector<DetectorPtr>::iterator detector_20_percentage = detectors.begin() + detectors.size() * 0.2 + 1;
+	std::vector<DetectorPtr>::iterator detector_60_percentage = detectors.begin() + detectors.size() * 0.6 + 1;
+	std::vector<DetectorPtr> new_detectors;
+
+	for (auto dit = detectors.begin(); dit != detector_60_percentage; ++dit)
+	{
+		new_detectors.push_back(DetectorPtr((*dit)->clone(false))); // Clone
+		if (dit < detector_20_percentage) 
+		{
+			new_detectors.push_back(DetectorPtr((*dit)->clone())); // Mutate version
+			new_detectors.back()->mutate();
+		}
+	}
+
+	NegativeSelection(new_detectors, self_antigens);
+
+	while (new_detectors.size() < detectors.size())
+	{
+		DetectorPtr new_detector(generator->generate());
+
+		if (NegativeSelection(new_detector, self_antigens))
+		{
+			new_detectors.push_back(new_detector);
+		}
+	}
+
+	detectors.swap(new_detectors);
+}
 
 } // namepsace Algorithm
 } // namespace AIS

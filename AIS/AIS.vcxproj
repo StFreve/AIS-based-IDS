@@ -71,17 +71,19 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <OutDir>$(SolutionDir)\lib\</OutDir>
+    <IntDir>$(SolutionDir)\obj\$(ProjectName)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(SolutionDir)\lib\</OutDir>
+    <IntDir>$(SolutionDir)\obj\$(ProjectName)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)\lib\</OutDir>
-    <IntDir>$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)\obj\$(ProjectName)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)\lib\</OutDir>
-    <IntDir>$(Configuration)\</IntDir>
+    <IntDir>$(SolutionDir)\obj\$(ProjectName)\$(Configuration)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -134,6 +136,12 @@
   <ItemGroup>
     <ClCompile Include="Algorithms.cpp" />
     <ClCompile Include="BitsArray.cpp" />
+    <ClCompile Include="Detector.cpp" />
+    <ClCompile Include="DetectorGenerator.cpp" />
+    <ClCompile Include="KDDAntigen.cpp" />
+    <ClCompile Include="KDDDetector.cpp" />
+    <ClCompile Include="KDDDetectorGenerator.cpp" />
+    <ClCompile Include="KDDReader.cpp" />
     <ClCompile Include="PacketAntigen.cpp" />
     <ClCompile Include="RCBDetector.cpp" />
     <ClCompile Include="Utilities.cpp" />
@@ -141,8 +149,14 @@
   <ItemGroup>
     <ClInclude Include="Algorithms.h" />
     <ClInclude Include="BitsArray.h" />
-    <ClInclude Include="IAntigen.h" />
-    <ClInclude Include="IDetector.h" />
+    <ClInclude Include="Convert.h" />
+    <ClInclude Include="Antigen.h" />
+    <ClInclude Include="Detector.h" />
+    <ClInclude Include="DetectorGenerator.h" />
+    <ClInclude Include="KDDAntigen.h" />
+    <ClInclude Include="KDDDetector.h" />
+    <ClInclude Include="KDDDetectorGenerator.h" />
+    <ClInclude Include="KDDReader.h" />
     <ClInclude Include="PacketAntigen.h" />
     <ClInclude Include="RCBDetector.h" />
     <ClInclude Include="Utilities.h" />
