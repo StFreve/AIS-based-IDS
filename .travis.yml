@@ -8,6 +8,3 @@ addons:
       - g++-7
 env: CC=gcc-7 CXX=g++-7
 script: ./configure && make && make test
-branches:
-  only:
-  - master
